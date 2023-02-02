@@ -4,6 +4,6 @@ import com.interview.shoppingbasket.basket.Basket;
 
 import java.util.List;
 
-interface PromotionsService {
+public interface PromotionsService {
     List<Promotion> getPromotions(Basket basket);
 }
