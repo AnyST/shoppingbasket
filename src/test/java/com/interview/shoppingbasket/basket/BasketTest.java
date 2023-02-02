@@ -1,7 +1,9 @@
-package com.interview.shoppingbasket;
+package com.interview.shoppingbasket.basket;
 
 import java.util.List;
 
+import com.interview.shoppingbasket.basket.Basket;
+import com.interview.shoppingbasket.basket.BasketItem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

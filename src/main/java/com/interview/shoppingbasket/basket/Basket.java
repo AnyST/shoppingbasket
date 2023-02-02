@@ -1,4 +1,4 @@
-package com.interview.shoppingbasket;
+package com.interview.shoppingbasket.basket;
 
 import java.util.ArrayList;
 import java.util.List;

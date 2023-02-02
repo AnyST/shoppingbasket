@@ -1,4 +1,4 @@
-package com.interview.shoppingbasket;
+package com.interview.shoppingbasket.basket;
 
 import lombok.Data;
 
