@@ -13,9 +13,9 @@ public class ApplyPromotionCheckoutStep implements CheckoutStep {
     private final PromotionsService promotionsService;
 
     @Override
-    public void execute(CheckoutContext ctx) {
-        Basket basket = ctx.getBasket();
+    public void execute(CheckoutContext checkoutContext) {
+        Basket basket = checkoutContext.getBasket();
         List<Promotion> promotions = promotionsService.getPromotions(basket);
-        ctx.getPromotions().addAll(promotions);
+        checkoutContext.getPromotions().addAll(promotions);
     }
 }

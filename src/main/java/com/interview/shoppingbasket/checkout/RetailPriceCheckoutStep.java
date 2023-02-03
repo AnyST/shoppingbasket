@@ -6,29 +6,43 @@ import com.interview.shoppingbasket.basket.BasketItem;
 import com.interview.shoppingbasket.promotion.Promotion;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @RequiredArgsConstructor
 public class RetailPriceCheckoutStep implements CheckoutStep {
     private final PricingService pricingService;
-    private double retailTotal;
 
     @Override
     public void execute(CheckoutContext context) {
         Basket basket = context.getBasket();
-        retailTotal = 0.0;
+        double retailTotal = 0.0;
 
-        for (final BasketItem bi : basket.getItems()) {
-            int quantity = bi.getQuantity();
-            double price = pricingService.getPrice(bi.getProductCode());
-            bi.setProductRetailPrice(price);
-            retailTotal += quantity*price;
+        for (final BasketItem item : basket.getItems()) {
+            double price = pricingService.getPrice(item.getProductCode());
+            item.setProductRetailPrice(price);
+            if (!context.getPromotions().isEmpty()) {
+                BigDecimal priceWithPromotions = context.getPromotions().stream()
+                        .reduce(BigDecimal.valueOf(price), (totalPrice, promotion) -> applyPromotion(promotion, item), BigDecimal::subtract);
+                retailTotal += priceWithPromotions.doubleValue();
+            } else {
+                retailTotal += item.getQuantity() * price;
+            }
         }
         context.setRetailPriceTotal(retailTotal);
     }
 
-    public double applyPromotion(Promotion promotion, BasketItem item, double price) {
-        /*
-         * Implement applyPromotion method
-         */
-        return retailTotal;
+    private BigDecimal applyPromotion(final Promotion promotion, final BasketItem item) {
+        String productCode = item.getProductCode();
+        double price = 0;
+
+        if (promotion.getProductCode().equals(productCode)) {
+            price = promotion.apply(item.getProductRetailPrice(), item.getQuantity());
+        }
+
+        if (!promotion.isQtdUsed()) {
+            price *= item.getQuantity();
+        }
+        return BigDecimal.valueOf(price).setScale(2, RoundingMode.HALF_DOWN);
     }
 }

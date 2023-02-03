@@ -1,18 +1,15 @@
 package com.interview.shoppingbasket.checkout;
 
-import static org.mockito.Mockito.when;
-
 import com.interview.shoppingbasket.basket.Basket;
-import com.interview.shoppingbasket.checkout.BasketConsolidationCheckoutStep;
-import com.interview.shoppingbasket.checkout.CheckoutContext;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class BasketConsolidationCheckoutStepTest {
+import static org.mockito.Mockito.when;
+
+class BasketConsolidationCheckoutStepTest {
 
     @Test
     void basketConsolidationCheckoutStepTest() {
-
         CheckoutContext checkoutContext = Mockito.mock(CheckoutContext.class);
         Basket basket = Mockito.mock(Basket.class);
 
@@ -22,7 +19,6 @@ public class BasketConsolidationCheckoutStepTest {
         basketConsolidationCheckoutStep.execute(checkoutContext);
 
         Mockito.verify(checkoutContext).getBasket();
-
         Mockito.verify(basket).consolidateItems();
     }
 

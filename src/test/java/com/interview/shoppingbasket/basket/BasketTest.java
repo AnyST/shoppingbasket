@@ -1,12 +1,10 @@
 package com.interview.shoppingbasket.basket;
 
-import java.util.List;
-
-import com.interview.shoppingbasket.basket.Basket;
-import com.interview.shoppingbasket.basket.BasketItem;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BasketTest {
     @Test
@@ -38,7 +36,7 @@ class BasketTest {
 
         List<BasketItem> basketSize = basket.getItems();
 
-        assertEquals(basketSize.size(),3);
+        assertEquals(basketSize.size(), 3);
         assertEquals(basketSize.get(0).getProductCode(), "productCode");
         assertEquals(basketSize.get(0).getProductName(), "myProduct");
         assertEquals(basketSize.get(0).getQuantity(), 10);
@@ -59,7 +57,7 @@ class BasketTest {
         basket.add("productCode3", "myProduct3", 40);
 
         basket.consolidateItems();
-        assertEquals(3,basket.getItems().size());
-        assertEquals(53,basket.getItems().get(1).getQuantity());
+        assertEquals(3, basket.getItems().size());
+        assertEquals(53, basket.getItems().get(1).getQuantity());
     }
 }
