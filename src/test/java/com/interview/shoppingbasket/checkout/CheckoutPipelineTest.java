@@ -4,21 +4,20 @@ import com.interview.shoppingbasket.basket.Basket;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class CheckoutPipelineTest {
+
 
     CheckoutPipeline checkoutPipeline;
 
     @Mock
     Basket basket;
-
-    @Mock
-    CheckoutStep checkoutStep1;
-
-    @Mock
-    CheckoutStep checkoutStep2;
 
     @BeforeEach
     void setup() {
@@ -34,6 +33,11 @@ class CheckoutPipelineTest {
 
     @Test
     void executeAllPassedCheckoutSteps() {
-        // Exercise - implement testing passing through all checkout steps
+        CheckoutStep checkoutStep = Mockito.mock(CheckoutStep.class);
+
+        checkoutPipeline.add(checkoutStep);
+        checkoutPipeline.checkout(basket);
+
+        verify(checkoutStep).execute(any());
     }
 }
