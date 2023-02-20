@@ -1,6 +1,8 @@
-package com.interview.shoppingbasket.checkout;
+package com.interview.shoppingbasket.checkout.step;
 
-import com.interview.shoppingbasket.PricingService;
+import com.interview.shoppingbasket.checkout.CheckoutContext;
+import com.interview.shoppingbasket.checkout.step.CheckoutStep;
+import com.interview.shoppingbasket.service.PricingService;
 import com.interview.shoppingbasket.basket.Basket;
 import com.interview.shoppingbasket.basket.BasketItem;
 import com.interview.shoppingbasket.promotion.Promotion;
@@ -14,7 +16,7 @@ public class RetailPriceCheckoutStep implements CheckoutStep {
     private final PricingService pricingService;
 
     @Override
-    public void execute(CheckoutContext context) {
+    public void execute(final CheckoutContext context) {
         Basket basket = context.getBasket();
         double retailTotal = 0.0;
 

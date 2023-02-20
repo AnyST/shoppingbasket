@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-class CheckoutContext {
+public class CheckoutContext {
     private final List<Promotion> promotions = new ArrayList<>();
     private final Basket basket;
     private double retailPriceTotal = 0.0;

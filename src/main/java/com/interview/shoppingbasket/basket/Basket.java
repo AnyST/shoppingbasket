@@ -1,11 +1,14 @@
 package com.interview.shoppingbasket.basket;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Data
 public class Basket {
     private final List<BasketItem> items = new ArrayList<>();
 
@@ -13,10 +16,6 @@ public class Basket {
         BasketItem basketItem = new BasketItem(productCode, quantity);
         basketItem.setProductName(productName);
         items.add(basketItem);
-    }
-
-    public List<BasketItem> getItems() {
-        return items;
     }
 
     public void consolidateItems() {

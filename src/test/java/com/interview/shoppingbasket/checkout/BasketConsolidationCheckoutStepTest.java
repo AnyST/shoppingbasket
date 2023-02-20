@@ -1,6 +1,7 @@
 package com.interview.shoppingbasket.checkout;
 
 import com.interview.shoppingbasket.basket.Basket;
+import com.interview.shoppingbasket.checkout.step.BasketConsolidationCheckoutStep;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

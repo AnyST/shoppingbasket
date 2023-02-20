@@ -1,6 +1,7 @@
 package com.interview.shoppingbasket.checkout;
 
 import com.interview.shoppingbasket.basket.Basket;
+import com.interview.shoppingbasket.checkout.step.ApplyPromotionCheckoutStep;
 import com.interview.shoppingbasket.promotion.Promotion;
 import com.interview.shoppingbasket.promotion.PromotionsService;
 import org.junit.jupiter.api.BeforeEach;
