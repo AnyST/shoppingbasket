@@ -16,6 +16,7 @@ class PromotionTest {
         BasketItem basketItem = new BasketItem(promotion.getProductCode(), qtd);
         basketItem.setProductRetailPrice(price);
 
+        assertEquals(true, promotion.isQtdUsed());
         assertEquals(finalPrice, promotion.apply(basketItem.getProductRetailPrice(), basketItem.getQuantity()));
     }
 
@@ -26,6 +27,7 @@ class PromotionTest {
         BasketItem basketItem = new BasketItem(promotion.getProductCode(), 7);
         basketItem.setProductRetailPrice(price);
 
+        assertEquals(false, promotion.isQtdUsed());
         assertEquals(50, promotion.apply(basketItem.getProductRetailPrice(), basketItem.getQuantity()));
     }
 
@@ -36,6 +38,7 @@ class PromotionTest {
         BasketItem basketItem = new BasketItem(promotion.getProductCode(), 5);
         basketItem.setProductRetailPrice(price);
 
+        assertEquals(false, promotion.isQtdUsed());
         assertEquals(90, promotion.apply(basketItem.getProductRetailPrice(), basketItem.getQuantity()));
     }
 

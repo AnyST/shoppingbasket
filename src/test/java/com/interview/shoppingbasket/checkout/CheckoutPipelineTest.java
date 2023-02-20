@@ -12,7 +12,6 @@ import static org.mockito.Mockito.verify;
 
 class CheckoutPipelineTest {
 
-
     CheckoutPipeline checkoutPipeline;
 
     @Mock

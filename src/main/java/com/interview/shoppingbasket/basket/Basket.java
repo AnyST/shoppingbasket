@@ -21,11 +21,12 @@ public class Basket {
 
     public void consolidateItems() {
         // Exercise - implement this function
-        Map<String, BasketItem> a = items.stream()
-                .collect(Collectors.toMap(BasketItem::getProductCode,
-                                          Function.identity(),
-                                          (bi1, bi2) -> new BasketItem(bi1.getProductCode(),
-                                                  bi1.getQuantity() + bi2.getQuantity())));
+        Map<String, BasketItem> a = items.stream().collect(
+                Collectors.toMap(BasketItem::getProductCode,
+                                Function.identity(),
+                                (bi1, bi2) ->
+                                    new BasketItem(bi1.getProductCode(),
+                            bi1.getQuantity() + bi2.getQuantity())));
 
 
         items.clear();

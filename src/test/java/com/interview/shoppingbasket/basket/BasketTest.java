@@ -12,7 +12,7 @@ class BasketTest {
         Basket basket = new Basket();
         List<BasketItem> basketSize = basket.getItems();
 
-        assertEquals(basketSize.size(), 0);
+        assertEquals(0, basketSize.size());
     }
 
     @Test
@@ -21,10 +21,10 @@ class BasketTest {
         basket.add("productCode", "myProduct", 10);
         List<BasketItem> basketSize = basket.getItems();
 
-        assertEquals(basketSize.size(), 1);
-        assertEquals(basketSize.get(0).getProductCode(), "productCode");
-        assertEquals(basketSize.get(0).getProductName(), "myProduct");
-        assertEquals(basketSize.get(0).getQuantity(), 10);
+        assertEquals(1, basketSize.size());
+        assertEquals("productCode", basketSize.get(0).getProductCode());
+        assertEquals("myProduct", basketSize.get(0).getProductName());
+        assertEquals(10, basketSize.get(0).getQuantity());
     }
 
     @Test
@@ -36,16 +36,16 @@ class BasketTest {
 
         List<BasketItem> basketSize = basket.getItems();
 
-        assertEquals(basketSize.size(), 3);
-        assertEquals(basketSize.get(0).getProductCode(), "productCode");
-        assertEquals(basketSize.get(0).getProductName(), "myProduct");
-        assertEquals(basketSize.get(0).getQuantity(), 10);
-        assertEquals(basketSize.get(1).getProductCode(), "productCode2");
-        assertEquals(basketSize.get(1).getProductName(), "myProduct2");
-        assertEquals(basketSize.get(1).getQuantity(), 10);
-        assertEquals(basketSize.get(2).getProductCode(), "productCode3");
-        assertEquals(basketSize.get(2).getProductName(), "myProduct3");
-        assertEquals(basketSize.get(2).getQuantity(), 10);
+        assertEquals(3, basketSize.size());
+        assertEquals("productCode", basketSize.get(0).getProductCode());
+        assertEquals("myProduct", basketSize.get(0).getProductName());
+        assertEquals(10, basketSize.get(0).getQuantity());
+        assertEquals("productCode2", basketSize.get(1).getProductCode());
+        assertEquals("myProduct2", basketSize.get(1).getProductName());
+        assertEquals(10, basketSize.get(1).getQuantity());
+        assertEquals("productCode3", basketSize.get(2).getProductCode());
+        assertEquals("myProduct3", basketSize.get(2).getProductName());
+        assertEquals(10, basketSize.get(2).getQuantity());
     }
 
     @Test
