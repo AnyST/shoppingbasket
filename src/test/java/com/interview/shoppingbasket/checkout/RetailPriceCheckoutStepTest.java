@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import java.util.Collections;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 class RetailPriceCheckoutStepTest {
@@ -23,10 +24,8 @@ class RetailPriceCheckoutStepTest {
     void setup() {
         pricingService = Mockito.mock(PricingService.class);
         promotionsService = Mockito.mock(PromotionsService.class);
-        checkoutContext = Mockito.mock(CheckoutContext.class);
         basket = new Basket();
-
-        when(checkoutContext.getBasket()).thenReturn(basket);
+        checkoutContext = Mockito.spy(new CheckoutContext(basket));
     }
 
     @Test
